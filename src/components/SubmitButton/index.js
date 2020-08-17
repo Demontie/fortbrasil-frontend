@@ -1,27 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
 
-export const MsgErro = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0.5;
-  background-color: red;
-  margin-top: 30px;
-  border-radius: 5px;
-  h1 {
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-  }
-`;
-
-export const LinksText = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-`;
-
 const rotate = keyframes`
  from {
    transform: rotate(0deg);
@@ -32,8 +10,8 @@ const rotate = keyframes`
  }
 `;
 
-export const SubmitButton = styled.button.attrs((props) => ({
-  type: 'submit',
+const SubmitButton = styled.button.attrs((props) => ({
+  type: !props.typeButton ? 'submit' : props.typeButton,
   disabled: props.loading,
 }))`
   background: green;
@@ -62,3 +40,5 @@ export const SubmitButton = styled.button.attrs((props) => ({
       }
     `}
 `;
+
+export default SubmitButton;

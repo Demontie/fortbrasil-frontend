@@ -3,7 +3,9 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 import Home from './pages/Home';
+import Shops from './pages/Shops';
 
 export default function Routes() {
   return (
@@ -11,7 +13,8 @@ export default function Routes() {
       <Switch>
         <Route path="/" exact component={SignIn} />
         <Route path="/home" component={Home} />
-        {/* <Route path="/SignUp" component={SignUp} /> */}
+        <Route path="/shops" component={Shops} />
+        <Route path="/signUp" exact component={SignUp} />
       </Switch>
     </BrowserRouter>
   );
