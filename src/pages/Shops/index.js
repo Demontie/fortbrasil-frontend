@@ -4,7 +4,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
-import { FaSpinner, FaSignInAlt, FaWarehouse } from 'react-icons/fa';
+import {
+  FaSpinner,
+  FaSignInAlt,
+  FaWarehouse,
+  FaTrashAlt,
+} from 'react-icons/fa';
 
 import api from '../../services/api';
 import Container from '../../components/Container/index';
@@ -69,6 +74,7 @@ export default class Shop extends Component {
         ? 'Estabelecimento atualizado com sucesso!'
         : 'Estabelecimento cadastrado com sucesso!';
       alert(msg);
+
       this.handleLoadShops();
       // eslint-disable-next-line no-alert
     } catch (err) {
@@ -89,6 +95,16 @@ export default class Shop extends Component {
     shopForm.lat = lat;
     shopForm.long = long;
     this.setState(shopForm);
+    return true;
+  };
+
+  handleDelete = async (e, shop) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const { id } = shop;
+    await api.delete(`/shops/${id}`);
+    alert('Excluido com sucesso!');
+    this.handleLoadShops();
     return true;
   };
 
@@ -171,9 +187,16 @@ export default class Shop extends Component {
 
                   <span>{shop.description}</span>
                 </strong>
-                {/* <SubmitButton typeButton="button">
-                  <FaSpinner color="#FFF" size={14} />
-                </SubmitButton> */}
+              </div>
+              <div>
+                <strong>
+                  <button
+                    type="button"
+                    onClick={(e) => this.handleDelete(e, shop)}
+                  >
+                    <FaTrashAlt />
+                  </button>
+                </strong>
               </div>
             </li>
           ))}

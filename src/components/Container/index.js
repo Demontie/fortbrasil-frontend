@@ -13,6 +13,20 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 10px;
+
+    a {
+      margin-left: 58%;
+
+      button {
+        background: green;
+        color: #fff;
+        border: 0;
+        border-radius: 4px;
+        width: 200px;
+        height: 30px;
+      }
+    }
 
     svg {
       margin-right: 10px;

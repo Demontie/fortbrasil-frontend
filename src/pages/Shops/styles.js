@@ -22,15 +22,18 @@ export const ShopsList = styled.ul`
 
       strong {
         font-size: 16px;
-
+        button {
+          background: red;
+          color: #fff;
+          border: 0;
+          padding: 0 15px;
+          margin-left: 10px;
+          border-radius: 4px;
+          height: 26px;
+        }
         label {
           text-decoration: none;
           color: #333;
-
-          &:hover {
-            color: #7159c1;
-            cursor: pointer;
-          }
         }
 
         span {

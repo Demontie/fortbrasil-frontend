@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
+import { FaHome, FaWarehouse, FaSpinner } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import {
   withGoogleMap,
   GoogleMap,
@@ -9,13 +11,18 @@ import {
 import api from '../../services/api';
 import Container from '../../components/Container/index';
 
+import LinksText from '../../components/LinksText/index';
+import { ShopsList, ButtonClick } from './styles';
+
 export default class Home extends Component {
   state = {
     myLocation: {
       lat: -3.732714,
-      long: -38.526997,
+      lng: -38.526997,
     },
     shops: [],
+    shopsWithDistance: [],
+    loading: false,
     info: false,
   };
 
@@ -29,12 +36,20 @@ export default class Home extends Component {
     this.setState({ shops: data });
   };
 
-  handleLocation = () => {
+  handleLocationShop = async () => {
+    this.setState({ loading: true });
+    const { myLocation } = this.state;
+    const { data } = await api.post('/shopLocation', myLocation);
+
+    this.setState({ shopsWithDistance: data, loading: false });
+  };
+
+  handleLocation = async () => {
     const { myLocation } = this.state;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         myLocation.lat = position.coords.latitude;
-        myLocation.long = position.coords.longitude;
+        myLocation.lng = position.coords.longitude;
         this.setState({ myLocation });
       });
     }
@@ -48,7 +63,7 @@ export default class Home extends Component {
   };
 
   render() {
-    const { info, shops, myLocation } = this.state;
+    const { info, shops, myLocation, shopsWithDistance, loading } = this.state;
 
     const myLocationIcon = new window.google.maps.MarkerImage(
       '/me.png',
@@ -74,6 +89,13 @@ export default class Home extends Component {
 
     return (
       <Container>
+        <h1>
+          <FaHome />
+          Home
+          <Link to="/shops">
+            <button type="button">Cadastrar estabelecimento</button>
+          </Link>
+        </h1>
         <MapComponent
           containerElement={<div style={{ height: `600px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
@@ -84,8 +106,8 @@ export default class Home extends Component {
               <Marker
                 key={shop.id}
                 position={{
-                  lat: shop.lat,
-                  lng: shop.long,
+                  lat: Number(shop.lat),
+                  lng: Number(shop.long),
                 }}
                 icon={shopIcon}
                 onClick={this.toggleInfo}
@@ -99,6 +121,32 @@ export default class Home extends Component {
             ))}
           </GoogleMap>
         </MapComponent>
+        <LinksText>
+          <ButtonClick
+            onClick={this.handleLocationShop}
+            loading={loading ? 1 : 0}
+          >
+            {loading ? (
+              <FaSpinner color="#FFF" size={14} />
+            ) : (
+              'Localizar Estabelecimentos'
+            )}
+          </ButtonClick>
+        </LinksText>
+        <ShopsList>
+          {shopsWithDistance.map((shopDistance) => (
+            <li key={shopDistance.shop.id}>
+              <FaWarehouse />
+              <div>
+                <strong>
+                  <label htmlFor="label">{shopDistance.shop.name}</label>
+
+                  <span>{shopDistance.distance.toFixed(2)} Km</span>
+                </strong>
+              </div>
+            </li>
+          ))}
+        </ShopsList>
       </Container>
     );
   }
