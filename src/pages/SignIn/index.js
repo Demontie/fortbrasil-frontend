@@ -15,8 +15,8 @@ import SubmitButton from '../../components/SubmitButton/index';
 
 export default class SignIn extends Component {
   state = {
-    email: '',
-    password: '',
+    email: 'admin@fortbrasil.com',
+    password: '123456',
     loading: false,
     erro: false,
     msgErro: null,

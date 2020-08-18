@@ -8,6 +8,7 @@ export const ShopsList = styled.ul`
 
   li {
     display: flex;
+    align-items: center;
     padding: 15px 10px;
     border: 1px solid #eee;
     border-radius: 4px;
@@ -15,11 +16,15 @@ export const ShopsList = styled.ul`
     & + li {
       margin-top: 10px;
     }
-
+    svg {
+      flex: none;
+    }
     div {
-      flex: 1;
+      flex: 3;
       margin-left: 15px;
-
+      & + div {
+        flex: 1;
+      }
       strong {
         font-size: 16px;
         button {
