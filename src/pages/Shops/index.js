@@ -4,6 +4,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   FaSpinner,
   FaSignInAlt,
@@ -123,8 +124,15 @@ export default class Shop extends Component {
     return (
       <Container>
         <h1>
-          <FaSignInAlt />
-          Estabelecimento
+          <span>
+            <FaSignInAlt />
+            Estabelecimento
+          </span>
+          <div>
+            <Link to="/home">
+              <button type="button">Voltar</button>
+            </Link>
+          </div>
         </h1>
 
         {erro && (

@@ -62,6 +62,12 @@ export default class Home extends Component {
     });
   };
 
+  handleSignOut = () => {
+    window.sessionStorage.removeItem('token');
+    window.sessionStorage.removeItem('user');
+    window.location = '/';
+  };
+
   render() {
     const { info, shops, myLocation, shopsWithDistance, loading } = this.state;
 
@@ -90,11 +96,18 @@ export default class Home extends Component {
     return (
       <Container>
         <h1>
-          <FaHome />
-          Home
-          <Link to="/shops">
-            <button type="button">Cadastrar estabelecimento</button>
-          </Link>
+          <span>
+            <FaHome />
+            Home
+          </span>
+          <div>
+            <Link to="/shops">
+              <button type="button">Cadastrar estabelecimento</button>
+            </Link>
+            <button type="button" onClick={this.handleSignOut}>
+              Sair
+            </button>
+          </div>
         </h1>
         <MapComponent
           containerElement={<div style={{ height: `600px` }} />}

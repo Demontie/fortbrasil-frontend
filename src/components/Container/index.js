@@ -14,20 +14,20 @@ const Container = styled.div`
     flex-direction: row;
     align-items: center;
     margin-bottom: 10px;
+    justify-content: space-between;
 
-    a {
-      margin-left: 58%;
-
-      button {
-        background: green;
-        color: #fff;
-        border: 0;
-        border-radius: 4px;
-        width: 200px;
-        height: 30px;
-      }
+    button {
+      background: green;
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      padding: 5px 10px;
+      height: 30px;
+      margin-left: 15px;
     }
-
+    button:nth-child(2) {
+      background: red;
+    }
     svg {
       margin-right: 10px;
     }

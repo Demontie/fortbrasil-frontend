@@ -23,9 +23,12 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response.status === 401) {
+    if (
+      error.response.status === 401 &&
+      error.response.config.url !== '/login'
+    ) {
       const requestConfig = error.config;
-      window.location = '/login';
+      window.location = '/';
       return axios(requestConfig);
     }
     return Promise.reject(error);

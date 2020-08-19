@@ -20,7 +20,7 @@ export const ShopsList = styled.ul`
       flex: none;
     }
     div {
-      flex: 3;
+      flex: 10;
       margin-left: 15px;
       & + div {
         flex: 1;
