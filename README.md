@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Fastfeet" title="Fastfeet" src="./.github/fortbrasil-logo.png" width="300px" />
+  <img alt="fortbrasil" title="fortbrasil" src="./.github/fortbrasil-logo.png" width="300px" />
   <br>
   Ajudando pessoas a viverem melhor
 </h1>
@@ -21,7 +21,7 @@ Este projeto de um teste pratico para um gerenciamento de lojas mais proximas do
 Esta é a 2/3 partes de um projeto como todo. O mesmo foi construído utilizando as tecnlologias mais populares de JavaScript e do mercado.
 
 Se você ainda não baixou as partes (1/3) ou (3/3), você vai encontrar elas abaixo, siga os passos para uma instalação correta:
-- [(1/3) Api](https://github.com/Demontie/api-fortbrasil)
+- [(1/3) Api](https://github.com/Demontie/fortbrasil-backend)
 - [(3/3) App](https://github.com/Demontie/fortbrasil-mobile)
 
 ## :camera: Preview
