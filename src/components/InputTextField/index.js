@@ -3,6 +3,14 @@ import styled from 'styled-components';
 const InputTextField = styled.div`
   display: flex;
   margin-bottom: 45px;
+
+  div {
+    flex: 1;
+    input {
+      width: 100%;
+    }
+  }
+
   input {
     flex: 1;
     font-size: 18px;

@@ -13,13 +13,14 @@ import {
 } from 'react-icons/fa';
 
 import api from '../../services/api';
-import Container from '../../components/Container/index';
-import LinksText from '../../components/LinksText/index';
-import InputTextField from '../../components/InputTextField/index';
-import Form from '../../components/Form/index';
-import SubmitButton from '../../components/SubmitButton/index';
+import Container from '../../components/Container';
+import LinksText from '../../components/LinksText';
+import InputTextField from '../../components/InputTextField';
+import Form from '../../components/Form';
+import SubmitButton from '../../components/SubmitButton';
+import InputGroupAutocomplete from '../../components/InputGroupAutocomplete';
 
-import MsgErro from '../../components/MsgErro/index';
+import MsgErro from '../../components/MsgErro';
 import { ShopsList } from './styles';
 
 export default class Shop extends Component {
@@ -109,6 +110,13 @@ export default class Shop extends Component {
     return true;
   };
 
+  handleSelectAddress = ({ lat, lng }) => {
+    const { shopForm } = this.state;
+    shopForm.lat = lat;
+    shopForm.long = lng;
+    this.setState(shopForm);
+  };
+
   render() {
     const {
       name,
@@ -158,6 +166,14 @@ export default class Shop extends Component {
               placeholder="Descricao"
               value={description}
               onChange={this.handleInputChange}
+            />
+          </InputTextField>
+          <InputTextField>
+            <InputGroupAutocomplete
+              inputId="address"
+              inputTitle="Procurar por..."
+              inputType="text"
+              onSelected={this.handleSelectAddress}
             />
           </InputTextField>
           <InputTextField>
