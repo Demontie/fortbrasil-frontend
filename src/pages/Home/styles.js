@@ -80,9 +80,7 @@ export const ButtonClick = styled.button.attrs((props) => ({
   padding: 0 15px;
   margin-left: 10px;
   border-radius: 4px;
-  width: 150px;
-  height: 30px;
-
+  padding: 8px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
