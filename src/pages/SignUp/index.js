@@ -90,6 +90,7 @@ export default class Shop extends Component {
               placeholder="Nome"
               value={name}
               onChange={this.handleInputChange}
+              autoComplete="off"
             />
           </InputTextField>
           <InputTextField>
@@ -99,6 +100,7 @@ export default class Shop extends Component {
               placeholder="Email"
               value={email}
               onChange={this.handleInputChange}
+              autoComplete="off"
             />
           </InputTextField>
           <InputTextField>

@@ -155,6 +155,7 @@ export default class Shop extends Component {
               id="name"
               type="text"
               placeholder="Nome"
+              autoComplete="off"
               value={name}
               onChange={this.handleInputChange}
             />
@@ -163,6 +164,7 @@ export default class Shop extends Component {
             <input
               id="description"
               type="text"
+              autoComplete="off"
               placeholder="Descricao"
               value={description}
               onChange={this.handleInputChange}
